@@ -1,7 +1,9 @@
 README
 
-This document describes the contents of the supplementary material folder and
-directions to replicate the experimental results reported in the main file.
+This document describes the contents of the containing directory and
+directions to replicate the experimental results reported in the work 
+Differentially Private Decomposable Submodular Optimization, accepted 
+in AAAI 2021.
 
 Overview:
   The code folder contains all code required to run the experiments.
@@ -89,11 +91,11 @@ Running the visualization:
     numpy
     math
 
-  On a unix based machine with the appropriate version of python installed, the
+  On a Unix-based machine with the appropriate version of python installed, the
   graphing code is interpreted with the commands:
 
     python graph1.py
     python graph2.py
 
   The graphs created get saved to the visualization folder folders as
-  "Cardinality constraint.png" and "Partition matroid constraint reported.png".
+  "Cardinality constraint.png" and "Partition matroid constraint.png".
