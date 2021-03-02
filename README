@@ -1,0 +1,99 @@
+README
+
+This document describes the contents of the supplementary material folder and
+directions to replicate the experimental results reported in the main file.
+
+Overview:
+  The code folder contains all code required to run the experiments.
+  The data folder contains the Uber dataset used in this experiment, as well
+  as a smaller dataset constructed from reservoir sampling as part of
+  preprocessing (the code for the preprocessing is in
+  "dpo_final/code/preproc.hpp").
+  The results folders stores the experimental results of the two experiments.
+    "exp1.csv" stores the results of the cardinality constraint experiment, this
+    is created when experiment1() is executed.
+    "exp2.csv" stores the results of the partition matroid experiment, this
+    is created when experiment2() is executed.
+    "reported_aaai_exp1.csv" stores the results reported for the cardinality
+    constraint experiment.
+    "reported_aaai_exp2.csv" stores the results reported for the partition matroid
+    experiment.
+  The visualization folder contains code to read and graph the experimental
+  results, and stores the graphs constructed.
+    "graph1.py" graphs the results of the cardinality constraint experiment.
+    "graph2.py" graphs the results of the partition matroid experiment.
+    "Cardinality constraint.png" is the graph constructed from "exp1.csv", this
+    is created when graph1.py is run.
+    "Parition matroid constraint (reported).png" is the graph constructed from "exp2.csv",
+    this is created when graph2.py is run.
+    "Cardinality constraint.png" is the graph constructed from "reported_aaai_exp1.csv".
+    "Parition matroid constraint (reported).png" is the graph constructed from 
+    "reported_aaai_exp1.csv".
+
+Code description:
+  The algorithms being compared are implemented in c++11. There are no special
+  packages required to run this code, the only c++ libraries used which are not
+  included in the folder are:
+
+    iostream
+    string
+    vector
+    set
+    cmath
+    fstream
+    chrono
+    ctime
+    functional
+    random
+    algorithm
+
+Running the experiments:
+  Compiling and running code/experiment.cpp with c++11 will execute both
+  experiments reported with 400 runs of each. The number of runs can be set by
+  changing the value of the numOfRuns variable in the main function (note that
+  reducing this would increase the variance of the results). When the current
+  directory is dpo_final/code, on a Unix based machine with g++, the code may be
+  compiled and executed with the following commands:
+
+    g++ -std=c++11 experiment.cpp -o experiment.out
+    ./experiment.out
+
+  The experimentTemplate conducts the experiment for the given parameters.
+  The experiment1 and experiment2 methods set up appropriate parameters to
+  recreate the results reported in the submission. The code and variable names
+  are explained within the experiment.cpp file.
+
+  The results of the experiments 1 and 2 are saved in the "dpo_final/results"
+  folder as csv files "exp1.csv" and "exp2.csv". The data recorded and reported
+  in the main submission are saved as "reported_exp1.csv" and
+  "reported_exp2.csv". The second file only has the data that was used to
+  construct the graph and does not record values for Random and Greedy.
+
+  The csv files in the results folder record the empirical mean and standard
+  deviation.
+
+Run time:
+  It takes about 35 minutes for the first experiment (400 runs each for 6 ranks) 
+  and 14 minutes for the second experiment (400 runs each for 10 dataset sizes) These run times were observed on a 1.1GHz 
+  Dual-Core Intel Core i3 laptop with 8GB of 3733 MHz LPDDR4 RAM.
+
+Running the visualization:
+  The code in the visualization folder is set up to automatically read from
+  the experimental results file and graph the data found there. The empirical
+  standard deviation is divided by the square root of the number of runs to get
+  the 1 standard deviation confidence interval of the empirical mean. The code
+  may be executed with python 3.6.10. The libraries used are:
+
+    csv
+    matplotlib.pyplot
+    numpy
+    math
+
+  On a unix based machine with the appropriate version of python installed, the
+  graphing code is interpreted with the commands:
+
+    python graph1.py
+    python graph2.py
+
+  The graphs created get saved to the visualization folder folders as
+  "Cardinality constraint.png" and "Partition matroid constraint reported.png".
